@@ -1,22 +1,31 @@
-let cenaAtual = "acordar";
+// Elementos capturados do DOM
+const nomePersonagemElemento = document.getElementById("character-name");
+const textoDialogoElemento = document.getElementById("dialogue-text");
+const containerOpcoes = document.getElementById("options-container");
 
-function carregarCena(nomeCena) {
-    const dadosCena = historia[nomeCena];
-    if (!dadosCena) return;
+// Função principal para carregar uma cena da história
+function carregarCena(idCena) {
+    const cenaAtual = historia[idCena];
 
-    // Injeta o nome do personagem e o texto na caixa criada com CSS
-    document.getElementById("character-name").innerText = dadosCena.personagem;
-    document.getElementById("dialogue-text").innerText = dadosCena.texto;
+    if (!cenaAtual) {
+        console.error("Cena não encontrada: " + idCena);
+        return;
+    }
 
-    const containerOpcoes = document.getElementById("options-container");
+    // Atualiza o nome do personagem e o texto do diálogo
+    nomePersonagemElemento.innerText = cenaAtual.personagem;
+    textoDialogoElemento.innerText = cenaAtual.texto;
+
+    // Limpa os botões de opções anteriores
     containerOpcoes.innerHTML = "";
 
-    // Cria as escolhas dinamicamente
-    dadosCena.opcoes.forEach(opcao => {
+    // Cria os novos botões com base nas opções da cena atual
+    cenaAtual.opcoes.forEach(opcao => {
         const botao = document.createElement("button");
-        botao.classList.add("option-button");
         botao.innerText = opcao.texto;
+        botao.classList.add("option-btn"); // Adiciona classe para estilização no css caso queira
         
+        // Configura o evento de clique para ir para a próxima cena
         botao.addEventListener("click", () => {
             carregarCena(opcao.proximaCena);
         });
@@ -25,6 +34,7 @@ function carregarCena(nomeCena) {
     });
 }
 
-window.onload = () => {
-    carregarCena(cenaAtual);
-};
+// Inicia o jogo automaticamente na cena 'acordar' ao carregar a página
+window.addEventListener("DOMContentLoaded", () => {
+    carregarCena("acordar");
+});
