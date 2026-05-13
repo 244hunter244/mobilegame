@@ -146,7 +146,7 @@ const historia = {
         personagem: "Morte",
         texto: "Ela se inclina milímetros para frente. 'O aneurisma cedeu. O sangramento começou. Não lute contra isso. Se você relaxar, o processo é mais rápido.'",
         opcoes: [
-            { texto: "Por favor... só segure a minha mão no escuro...", proximaCena: "fim_estatico" }
+            { texto: "Por favor... só segure a minha mão...", proximaCena: "fim_estatico" }
         ]
     },
     fim_estatico: {
