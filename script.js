@@ -4,15 +4,14 @@ function carregarCena(nomeCena) {
     const dadosCena = historia[nomeCena];
     if (!dadosCena) return;
 
-    // Atualiza quem está falando e o texto da tela
+    // Injeta o nome do personagem e o texto na caixa criada com CSS
     document.getElementById("character-name").innerText = dadosCena.personagem;
     document.getElementById("dialogue-text").innerText = dadosCena.texto;
 
-    // Limpa as opções da cena anterior
     const containerOpcoes = document.getElementById("options-container");
     containerOpcoes.innerHTML = "";
 
-    // Adiciona os novos botões de escolha
+    // Cria as escolhas dinamicamente
     dadosCena.opcoes.forEach(opcao => {
         const botao = document.createElement("button");
         botao.classList.add("option-button");

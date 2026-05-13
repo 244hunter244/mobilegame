@@ -7,8 +7,8 @@
 }
 
 body {
-    background-color: #0b0b0b;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #050505;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     color: #e0e0e0;
     display: flex;
     justify-content: center;
@@ -17,73 +17,104 @@ body {
     overflow: hidden;
 }
 
+/* Container do Celular */
 #game-container {
     width: 100%;
     max-width: 450px;
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: #121212;
-    border-left: 1px solid #222;
-    border-right: 1px solid #222;
+    background-color: #0d0d0d;
+    position: relative;
 }
 
+/* Tela Superior (Cenário / Vídeo) */
 #video-screen {
     flex: 1;
-    background-color: #181818;
+    background-color: #080808;
     display: flex;
     align-items: flex-end;
     padding: 20px;
-    background-image: linear-gradient(to bottom, rgba(0,0,0,0) 60%, rgba(0,0,0,0.8));
+    background-image: radial-gradient(circle at center, #150a0a 0%, #080808 100%);
 }
 
+/* Tag com o nome de quem fala */
 #character-name {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(10, 5, 5, 0.85);
+    padding: 6px 18px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #ff3333;
+    border-left: 3px solid #ff1a1a;
+    box-shadow: 0 0 10px rgba(255, 30, 30, 0.2);
 }
 
+/* Caixa de Diálogo Temática em CSS */
 #dialogue-box {
-    min-height: 45%;
-    background-color: #1a1a1a;
-    padding: 24px;
+    height: 50%;
+    background-color: #0a0a0a;
+    margin: 15px;
+    padding: 25px;
+    border-radius: 16px;
+    border: 2px solid #ff1a1a;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border-top: 1px solid #2c2c2c;
+    /* Efeito de brilho Neon Sombrio */
+    box-shadow: inset 0 0 15px rgba(255, 0, 0, 0.15), 0 0 20px rgba(255, 0, 0, 0.25);
+    animation: pulsarNeon 4s infinite alternate;
 }
 
+/* Texto da história */
 #dialogue-text {
     font-size: 1.05rem;
-    line-height: 1.5;
-    color: #d5d5d5;
+    line-height: 1.6;
+    color: #dedede;
+    overflow-y: auto;
 }
 
+/* Container dos Botões de Escolha */
 #options-container {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
+/* Estilo dos Botões de Opção */
 .option-button {
-    background-color: #242424;
+    background-color: #121212;
     color: #ffffff;
-    border: 1px solid #333333;
-    padding: 14px 16px;
-    border-radius: 12px;
+    border: 1px solid #331111;
+    padding: 14px 18px;
+    border-radius: 8px;
     cursor: pointer;
     text-align: left;
     font-size: 0.95rem;
-    line-height: 1.3;
-    transition: background 0.15s ease;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
+/* Efeito ao segurar/clicar no celular */
 .option-button:active {
-    background-color: #3a1c1c;
-    border-color: #ff4a4a;
+    background-color: #1a0808;
+    border-color: #ff3333;
+    box-shadow: 0 0 10px rgba(255, 51, 51, 0.4);
+    transform: scale(0.98);
+}
+
+/* Animação para dar clima de suspense à caixa */
+@keyframes pulsarNeon {
+    0% {
+        box-shadow: inset 0 0 15px rgba(255, 0, 0, 0.1), 0 0 15px rgba(255, 0, 0, 0.2);
+        border-color: #cc0000;
+    }
+    100% {
+        box-shadow: inset 0 0 22px rgba(255, 0, 0, 0.2), 0 0 25px rgba(255, 0, 0, 0.35);
+        border-color: #ff3333;
+    }
 }
